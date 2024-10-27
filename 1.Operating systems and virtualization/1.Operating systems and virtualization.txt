@@ -1,0 +1,353 @@
+
+TASK_1
+db@db-linux:~$ mkdir test
+db@db-linux:~$ cd test
+db@db-linux:~/test$ ls
+db@db-linux:~/test$
+db@db-linux:~/test$ cat <<EOT >> pets.txt
+cat
+dog
+hamster
+EOT
+db@db-linux:~/test$ cat pets.txt
+cat
+dog
+hamster
+db@db-linux:~/test$ cat <<EOT >> pack_animals.txt
+horse
+camel
+donkey
+EOT
+db@db-linux:~/test$ cat pack_animals.txt
+horse
+camel
+donkey
+db@db-linux:~/test$ cat pets.txt pack_animals.txt > animals.txt
+db@db-linux:~/test$ cat animals.txt
+cat
+dog
+hamster
+horse
+camel
+donkey
+db@db-linux:~/test$ mv animals.txt human_friends.txt
+db@db-linux:~/test$ ls
+human_friends.txt  pack_animals.txt  pets.txt
+
+TASK_2
+db@db-linux:~/test$ mkdir newdir
+db@db-linux:~/test$ mv human_friends.txt newdir
+db@db-linux:~/test$ ls
+newdir  pack_animals.txt  pets.txt
+db@db-linux:~/test$ ls newdir
+human_friends.txt
+
+
+TASK_3 (mysql-server)
+db@db-linux:~$ sudo apt install mysql-server
+[sudo] пароль для db:
+Чтение списков пакетов… Готово
+Построение дерева зависимостей… Готово
+Чтение информации о состоянии… Готово
+Следующий пакет устанавливался автоматически и больше не требуется:
+  libxcb-cursor0
+Для его удаления используйте «sudo apt autoremove».
+Будут установлены следующие дополнительные пакеты:
+  libaio1 libmecab2 mecab-ipadic mecab-ipadic-utf8 mecab-utils mysql-client mysql-common mysql-community-client
+  mysql-community-client-core mysql-community-client-plugins mysql-community-server mysql-community-server-core
+Следующие НОВЫЕ пакеты будут установлены:
+  libaio1 libmecab2 mecab-ipadic mecab-ipadic-utf8 mecab-utils mysql-client mysql-common mysql-community-client
+  mysql-community-client-core mysql-community-client-plugins mysql-community-server mysql-community-server-core
+  mysql-server
+Обновлено 0 пакетов, установлено 13 новых пакетов, для удаления отмечено 0 пакетов, и 249 пакетов не обновлено.
+Необходимо скачать 43,5 MB архивов.
+После данной операции объём занятого дискового пространства возрастёт на 287 MB.
+Хотите продолжить? [Д/н] y
+Пол:1 http://ru.archive.ubuntu.com/ubuntu jammy/main amd64 libaio1 amd64 0.3.112-13build1 [7 176 B]
+Пол:2 http://repo.mysql.com/apt/ubuntu jammy/mysql-8.4-lts amd64 mysql-common amd64 8.4.3-1ubuntu22.04 [60,1 kB]
+Пол:3 http://ru.archive.ubuntu.com/ubuntu jammy/main amd64 libmecab2 amd64 0.996-14build9 [199 kB]
+Пол:4 http://repo.mysql.com/apt/ubuntu jammy/mysql-8.4-lts amd64 mysql-community-client-plugins amd64 8.4.3-1ubuntu22.04 [1 522 kB]
+Пол:5 http://ru.archive.ubuntu.com/ubuntu jammy/main amd64 mecab-utils amd64 0.996-14build9 [4 850 B]
+Пол:6 http://ru.archive.ubuntu.com/ubuntu jammy/main amd64 mecab-ipadic all 2.7.0-20070801+main-3 [6 718 kB]
+Пол:7 http://ru.archive.ubuntu.com/ubuntu jammy/main amd64 mecab-ipadic-utf8 all 2.7.0-20070801+main-3 [4 384 B]
+Пол:8 http://repo.mysql.com/apt/ubuntu jammy/mysql-8.4-lts amd64 mysql-community-client-core amd64 8.4.3-1ubuntu22.04 [1 865 kB]
+Пол:9 http://repo.mysql.com/apt/ubuntu jammy/mysql-8.4-lts amd64 mysql-community-client amd64 8.4.3-1ubuntu22.04 [2 270 kB]
+Пол:10 http://repo.mysql.com/apt/ubuntu jammy/mysql-8.4-lts amd64 mysql-client amd64 8.4.3-1ubuntu22.04 [58,8 kB]
+Пол:11 http://repo.mysql.com/apt/ubuntu jammy/mysql-8.4-lts amd64 mysql-community-server-core amd64 8.4.3-1ubuntu22.04 [30,6 MB]
+Пол:12 http://repo.mysql.com/apt/ubuntu jammy/mysql-8.4-lts amd64 mysql-community-server amd64 8.4.3-1ubuntu22.04 [68,8 kB]
+Пол:13 http://repo.mysql.com/apt/ubuntu jammy/mysql-8.4-lts amd64 mysql-server amd64 8.4.3-1ubuntu22.04 [58,8 kB]
+Получено 43,5 MB за 1мин 2с (699 kB/s)
+Предварительная настройка пакетов …
+Выбор ранее не выбранного пакета mysql-common.
+(Чтение базы данных … на данный момент установлено 183644 файла и каталога.)
+Подготовка к распаковке …/00-mysql-common_8.4.3-1ubuntu22.04_amd64.deb …
+Распаковывается mysql-common (8.4.3-1ubuntu22.04) …
+Выбор ранее не выбранного пакета mysql-community-client-plugins.
+Подготовка к распаковке …/01-mysql-community-client-plugins_8.4.3-1ubuntu22.04_amd64.deb …
+Распаковывается mysql-community-client-plugins (8.4.3-1ubuntu22.04) …
+Выбор ранее не выбранного пакета mysql-community-client-core.
+Подготовка к распаковке …/02-mysql-community-client-core_8.4.3-1ubuntu22.04_amd64.deb …
+Распаковывается mysql-community-client-core (8.4.3-1ubuntu22.04) …
+Выбор ранее не выбранного пакета mysql-community-client.
+Подготовка к распаковке …/03-mysql-community-client_8.4.3-1ubuntu22.04_amd64.deb …
+Распаковывается mysql-community-client (8.4.3-1ubuntu22.04) …
+Выбор ранее не выбранного пакета mysql-client.
+Подготовка к распаковке …/04-mysql-client_8.4.3-1ubuntu22.04_amd64.deb …
+Распаковывается mysql-client (8.4.3-1ubuntu22.04) …
+Выбор ранее не выбранного пакета libaio1:amd64.
+Подготовка к распаковке …/05-libaio1_0.3.112-13build1_amd64.deb …
+Распаковывается libaio1:amd64 (0.3.112-13build1) …
+Выбор ранее не выбранного пакета libmecab2:amd64.
+Подготовка к распаковке …/06-libmecab2_0.996-14build9_amd64.deb …
+Распаковывается libmecab2:amd64 (0.996-14build9) …
+Выбор ранее не выбранного пакета mysql-community-server-core.
+Подготовка к распаковке …/07-mysql-community-server-core_8.4.3-1ubuntu22.04_amd64.deb …
+Распаковывается mysql-community-server-core (8.4.3-1ubuntu22.04) …
+Выбор ранее не выбранного пакета mysql-community-server.
+Подготовка к распаковке …/08-mysql-community-server_8.4.3-1ubuntu22.04_amd64.deb …
+Распаковывается mysql-community-server (8.4.3-1ubuntu22.04) …
+Выбор ранее не выбранного пакета mecab-utils.
+Подготовка к распаковке …/09-mecab-utils_0.996-14build9_amd64.deb …
+Распаковывается mecab-utils (0.996-14build9) …
+Выбор ранее не выбранного пакета mecab-ipadic.
+Подготовка к распаковке …/10-mecab-ipadic_2.7.0-20070801+main-3_all.deb …
+Распаковывается mecab-ipadic (2.7.0-20070801+main-3) …
+Выбор ранее не выбранного пакета mecab-ipadic-utf8.
+Подготовка к распаковке …/11-mecab-ipadic-utf8_2.7.0-20070801+main-3_all.deb …
+Распаковывается mecab-ipadic-utf8 (2.7.0-20070801+main-3) …
+Выбор ранее не выбранного пакета mysql-server.
+Подготовка к распаковке …/12-mysql-server_8.4.3-1ubuntu22.04_amd64.deb …
+Распаковывается mysql-server (8.4.3-1ubuntu22.04) …
+Настраивается пакет libmecab2:amd64 (0.996-14build9) …
+Настраивается пакет mysql-common (8.4.3-1ubuntu22.04) …
+update-alternatives: используется /etc/mysql/my.cnf.fallback для предоставления /etc/mysql/my.cnf (my.cnf) в автоматическом режиме
+Настраивается пакет mecab-utils (0.996-14build9) …
+Настраивается пакет mysql-community-client-plugins (8.4.3-1ubuntu22.04) …
+Настраивается пакет libaio1:amd64 (0.3.112-13build1) …
+Настраивается пакет mecab-ipadic (2.7.0-20070801+main-3) …
+Compiling IPA dictionary for Mecab.  This takes long time...
+reading /usr/share/mecab/dic/ipadic/unk.def ... 40
+emitting double-array: 100% |###########################################|
+/usr/share/mecab/dic/ipadic/model.def is not found. skipped.
+reading /usr/share/mecab/dic/ipadic/Noun.name.csv ... 34202
+reading /usr/share/mecab/dic/ipadic/Noun.demonst.csv ... 120
+reading /usr/share/mecab/dic/ipadic/Postp.csv ... 146
+reading /usr/share/mecab/dic/ipadic/Filler.csv ... 19
+reading /usr/share/mecab/dic/ipadic/Noun.others.csv ... 151
+reading /usr/share/mecab/dic/ipadic/Symbol.csv ... 208
+reading /usr/share/mecab/dic/ipadic/Conjunction.csv ... 171
+reading /usr/share/mecab/dic/ipadic/Noun.csv ... 60477
+reading /usr/share/mecab/dic/ipadic/Noun.org.csv ... 16668
+reading /usr/share/mecab/dic/ipadic/Noun.place.csv ... 72999
+reading /usr/share/mecab/dic/ipadic/Noun.adjv.csv ... 3328
+reading /usr/share/mecab/dic/ipadic/Suffix.csv ... 1393
+reading /usr/share/mecab/dic/ipadic/Interjection.csv ... 252
+reading /usr/share/mecab/dic/ipadic/Noun.proper.csv ... 27328
+reading /usr/share/mecab/dic/ipadic/Noun.verbal.csv ... 12146
+reading /usr/share/mecab/dic/ipadic/Adnominal.csv ... 135
+reading /usr/share/mecab/dic/ipadic/Noun.number.csv ... 42
+reading /usr/share/mecab/dic/ipadic/Noun.nai.csv ... 42
+reading /usr/share/mecab/dic/ipadic/Noun.adverbal.csv ... 795
+reading /usr/share/mecab/dic/ipadic/Auxil.csv ... 199
+reading /usr/share/mecab/dic/ipadic/Adverb.csv ... 3032
+reading /usr/share/mecab/dic/ipadic/Prefix.csv ... 221
+reading /usr/share/mecab/dic/ipadic/Verb.csv ... 130750
+reading /usr/share/mecab/dic/ipadic/Others.csv ... 2
+reading /usr/share/mecab/dic/ipadic/Adj.csv ... 27210
+reading /usr/share/mecab/dic/ipadic/Postp-col.csv ... 91
+emitting double-array: 100% |###########################################|
+reading /usr/share/mecab/dic/ipadic/matrix.def ... 1316x1316
+emitting matrix      : 100% |###########################################|
+
+done!
+update-alternatives: используется /var/lib/mecab/dic/ipadic для предоставления /var/lib/mecab/dic/debian (mecab-dictionary) в автоматическом режиме
+Настраивается пакет mysql-community-client-core (8.4.3-1ubuntu22.04) …
+Настраивается пакет mysql-community-server-core (8.4.3-1ubuntu22.04) …
+Настраивается пакет mecab-ipadic-utf8 (2.7.0-20070801+main-3) …
+Compiling IPA dictionary for Mecab.  This takes long time...
+reading /usr/share/mecab/dic/ipadic/unk.def ... 40
+emitting double-array: 100% |###########################################|
+/usr/share/mecab/dic/ipadic/model.def is not found. skipped.
+reading /usr/share/mecab/dic/ipadic/Noun.name.csv ... 34202
+reading /usr/share/mecab/dic/ipadic/Noun.demonst.csv ... 120
+reading /usr/share/mecab/dic/ipadic/Postp.csv ... 146
+reading /usr/share/mecab/dic/ipadic/Filler.csv ... 19
+reading /usr/share/mecab/dic/ipadic/Noun.others.csv ... 151
+reading /usr/share/mecab/dic/ipadic/Symbol.csv ... 208
+reading /usr/share/mecab/dic/ipadic/Conjunction.csv ... 171
+reading /usr/share/mecab/dic/ipadic/Noun.csv ... 60477
+reading /usr/share/mecab/dic/ipadic/Noun.org.csv ... 16668
+reading /usr/share/mecab/dic/ipadic/Noun.place.csv ... 72999
+reading /usr/share/mecab/dic/ipadic/Noun.adjv.csv ... 3328
+reading /usr/share/mecab/dic/ipadic/Suffix.csv ... 1393
+reading /usr/share/mecab/dic/ipadic/Interjection.csv ... 252
+reading /usr/share/mecab/dic/ipadic/Noun.proper.csv ... 27328
+reading /usr/share/mecab/dic/ipadic/Noun.verbal.csv ... 12146
+reading /usr/share/mecab/dic/ipadic/Adnominal.csv ... 135
+reading /usr/share/mecab/dic/ipadic/Noun.number.csv ... 42
+reading /usr/share/mecab/dic/ipadic/Noun.nai.csv ... 42
+reading /usr/share/mecab/dic/ipadic/Noun.adverbal.csv ... 795
+reading /usr/share/mecab/dic/ipadic/Auxil.csv ... 199
+reading /usr/share/mecab/dic/ipadic/Adverb.csv ... 3032
+reading /usr/share/mecab/dic/ipadic/Prefix.csv ... 221
+reading /usr/share/mecab/dic/ipadic/Verb.csv ... 130750
+reading /usr/share/mecab/dic/ipadic/Others.csv ... 2
+reading /usr/share/mecab/dic/ipadic/Adj.csv ... 27210
+reading /usr/share/mecab/dic/ipadic/Postp-col.csv ... 91
+emitting double-array: 100% |###########################################|
+reading /usr/share/mecab/dic/ipadic/matrix.def ... 1316x1316
+emitting matrix      : 100% |###########################################|
+
+done!
+update-alternatives: используется /var/lib/mecab/dic/ipadic-utf8 для предоставления /var/lib/mecab/dic/debian (mecab-dictionary) в автоматическом режиме
+Настраивается пакет mysql-community-client (8.4.3-1ubuntu22.04) …
+Настраивается пакет mysql-client (8.4.3-1ubuntu22.04) …
+Настраивается пакет mysql-community-server (8.4.3-1ubuntu22.04) …
+update-alternatives: используется /etc/mysql/mysql.cnf для предоставления /etc/mysql/my.cnf (my.cnf) в автоматическом режиме
+Created symlink /etc/systemd/system/multi-user.target.wants/mysql.service → /lib/systemd/system/mysql.service.
+Настраивается пакет mysql-server (8.4.3-1ubuntu22.04) …
+Обрабатываются триггеры для man-db (2.10.2-1) …
+Обрабатываются триггеры для libc-bin (2.35-0ubuntu3.6) …
+db@db-linux:~$ mysql --version
+mysql  Ver 8.4.3 for Linux on x86_64 (MySQL Community Server - GPL)
+db@db-linux:~$ systemctl status mysql
+● mysql.service - MySQL Community Server
+     Loaded: loaded (/lib/systemd/system/mysql.service; enabled; vendor preset: enabled)
+     Active: active (running) since Mon 2024-10-21 17:28:44 +05; 1min 13s ago
+       Docs: man:mysqld(8)
+             http://dev.mysql.com/doc/refman/en/using-systemd.html
+   Main PID: 3925 (mysqld)
+     Status: "Server is operational"
+      Tasks: 34 (limit: 4598)
+     Memory: 428.9M
+        CPU: 1.164s
+     CGroup: /system.slice/mysql.service
+             └─3925 /usr/sbin/mysqld
+
+окт 21 17:28:42 db-linux systemd[1]: Starting MySQL Community Server...
+окт 21 17:28:44 db-linux systemd[1]: Started MySQL Community Server.
+db@db-linux:~$
+
+
+
+TASK_4 (установка/удаление virtualbox)
+db@db-linux:~$ wget https://download.virtualbox.org/virtualbox/7.1.4/virtualbox-7.1_7.1.4-165100~Ubuntu~jammy_amd64.deb
+--2024-10-21 14:49:31--  https://download.virtualbox.org/virtualbox/7.1.4/virtualbox-7.1_7.1.4-165100~Ubuntu~jammy_amd64.deb
+Распознаётся download.virtualbox.org (download.virtualbox.org)… 23.214.204.107
+Подключение к download.virtualbox.org (download.virtualbox.org)|23.214.204.107|:443... соединение установлено.
+HTTP-запрос отправлен. Ожидание ответа… 200 OK
+Длина: 104137212 (99M) [text/plain]
+Сохранение в: ‘virtualbox-7.1_7.1.4-165100~Ubuntu~jammy_amd64.deb’
+
+virtualbox-7.1_7.1.4-165100~Ubuntu~jammy_amd64.deb   100%[===================================================================================================================>]  99,31M   662KB/s    за 2m 16s
+
+2024-10-21 14:51:48 (746 KB/s) - ‘virtualbox-7.1_7.1.4-165100~Ubuntu~jammy_amd64.deb’ сохранён [104137212/104137212]
+
+db@db-linux:~$ ll
+итого 102356
+drwxr-x--- 16 db   db          4096 окт 21 14:49  ./
+drwxr-xr-x  3 root root        4096 авг  4 15:38  ../
+-rw-------  1 db   db          1310 окт 21 14:39  .bash_history
+-rw-r--r--  1 db   db           220 авг  4 15:38  .bash_logout
+-rw-r--r--  1 db   db          3771 авг  4 15:38  .bashrc
+drwx------ 14 db   db          4096 авг  4 16:34  .cache/
+drwx------ 12 db   db          4096 авг  4 16:07  .config/
+-rw-r--r--  1 db   db             0 окт 21 14:22  .lesshsQ
+-rw-------  1 db   db            20 окт 21 14:02  .lesshst
+drwx------  3 db   db          4096 авг  4 15:48  .local/
+-rw-rw-r--  1 db   db         18200 апр 23 20:47  mysql-apt-config_0.8.30-1_all.deb
+-rw-rw-r--  1 db   db        527396 мар 14  2023  nginx_1.22.1-9_amd64.deb
+-rw-r--r--  1 db   db           807 авг  4 15:38  .profile
+drwxrwx---  1 root vboxsf         0 авг  4 16:34  shared/
+drwx------  4 db   db          4096 авг  4 15:51  snap/
+-rw-r--r--  1 db   db             0 авг  4 15:55  .sudo_as_admin_successful
+drwxrwxr-x  3 db   db          4096 окт 21 11:59  test/
+-rw-r-----  1 db   db             5 окт 21 14:45  .vboxclient-clipboard-tty2-control.pid
+-rw-r-----  1 db   db             5 окт 21 14:45  .vboxclient-clipboard-tty2-service.pid
+-rw-r-----  1 db   db             5 окт 21 14:45  .vboxclient-draganddrop-tty2-control.pid
+-rw-r-----  1 db   db             5 окт 21 14:45  .vboxclient-draganddrop-tty2-service.pid
+-rw-r-----  1 db   db             5 окт 21 14:45  .vboxclient-hostversion-tty2-control.pid
+-rw-r-----  1 db   db             5 окт 21 14:45  .vboxclient-seamless-tty2-control.pid
+-rw-r-----  1 db   db             5 окт 21 14:45  .vboxclient-seamless-tty2-service.pid
+-rw-r-----  1 db   db             5 окт 21 14:45  .vboxclient-vmsvga-session-tty2-control.pid
+-rw-r-----  1 db   db             5 окт 21 14:45  .vboxclient-vmsvga-session-tty2-service.pid
+-rw-rw-r--  1 db   db     104137212 окт 11 01:07  virtualbox-7.1_7.1.4-165100~Ubuntu~jammy_amd64.deb
+-rw-rw-r--  1 db   db           168 окт 21 13:53  .wget-hsts
+drwxr-xr-x  2 db   db          4096 авг  4 15:48  Видео/
+drwxr-xr-x  2 db   db          4096 авг  4 15:48  Документы/
+drwxr-xr-x  2 db   db          4096 авг  4 15:48  Загрузки/
+drwxr-xr-x  2 db   db          4096 авг  4 15:48  Изображения/
+drwxr-xr-x  2 db   db          4096 авг  4 15:48  Музыка/
+drwxr-xr-x  2 db   db          4096 авг  4 15:48  Общедоступные/
+drwxr-xr-x  2 db   db          4096 авг  4 15:48 'Рабочий стол'/
+drwxr-xr-x  2 db   db          4096 авг  4 15:48  Шаблоны/
+db@db-linux:~$ dpkg -i virtualbox-7.1_7.1.4-165100~Ubuntu~jammy_amd64.deb
+dpkg: ошибка: запрошенная операция требует привилегий суперпользователя
+db@db-linux:~$ sudo dpkg -i virtualbox-7.1_7.1.4-165100~Ubuntu~jammy_amd64.deb
+[sudo] пароль для db:
+Выбор ранее не выбранного пакета virtualbox-7.1.
+(Чтение базы данных … на данный момент установлено 183638 файлов и каталогов.)
+Подготовка к распаковке virtualbox-7.1_7.1.4-165100~Ubuntu~jammy_amd64.deb …
+Распаковывается virtualbox-7.1 (7.1.4-165100~Ubuntu~jammy) …
+dpkg: зависимости пакетов не позволяют настроить пакет virtualbox-7.1:
+ virtualbox-7.1 зависит от libxcb-cursor0 (>= 0.0.99), однако:
+  Пакет libxcb-cursor0 не установлен.
+
+dpkg: ошибка при обработке пакета virtualbox-7.1 (--install):
+ проблемы зависимостей — оставляем не настроенным
+Обрабатываются триггеры для libc-bin (2.35-0ubuntu3.6) …
+Обрабатываются триггеры для mailcap (3.70+nmu1ubuntu1) …
+Обрабатываются триггеры для gnome-menus (3.36.0-1ubuntu3) …
+Обрабатываются триггеры для desktop-file-utils (0.26-1ubuntu3) …
+Обрабатываются триггеры для hicolor-icon-theme (0.17-2) …
+Обрабатываются триггеры для shared-mime-info (2.1-2) …
+При обработке следующих пакетов произошли ошибки:
+ virtualbox-7.1
+db@db-linux:~$ apt -f install
+E: Не удалось открыть файл блокировки /var/lib/dpkg/lock-frontend - open (13: Отказано в доступе)
+E: Невозможно получить блокировку внешнего интерфейса dpkg (/var/lib/dpkg/lock-frontend); у вас есть права суперпользователя?
+db@db-linux:~$ sudo apt -f install
+Чтение списков пакетов… Готово
+Построение дерева зависимостей… Готово
+Чтение информации о состоянии… Готово
+Исправление зависимостей… Готово
+Будут установлены следующие дополнительные пакеты:
+  libxcb-cursor0
+Следующие НОВЫЕ пакеты будут установлены:
+  libxcb-cursor0
+Обновлено 0 пакетов, установлено 1 новых пакетов, для удаления отмечено 0 пакетов, и 249 пакетов не обновлено.
+Установлено или удалено не до конца 1 пакетов.
+Необходимо скачать 10,5 kB архивов.
+После данной операции объём занятого дискового пространства возрастёт на 39,9 kB.
+Хотите продолжить? [Д/н] y
+Пол:1 http://ru.archive.ubuntu.com/ubuntu jammy/universe amd64 libxcb-cursor0 amd64 0.1.1-4ubuntu1 [10,5 kB]
+Получено 10,5 kB за 0с (29,3 kB/s)
+Выбор ранее не выбранного пакета libxcb-cursor0:amd64.
+(Чтение базы данных … на данный момент установлено 184403 файла и каталога.)
+Подготовка к распаковке …/libxcb-cursor0_0.1.1-4ubuntu1_amd64.deb …
+Распаковывается libxcb-cursor0:amd64 (0.1.1-4ubuntu1) …
+Настраивается пакет libxcb-cursor0:amd64 (0.1.1-4ubuntu1) …
+Настраивается пакет virtualbox-7.1 (7.1.4-165100~Ubuntu~jammy) …
+Добавляется группа «vboxusers» (GID 137) ...
+Готово.
+This system is currently not set up to build kernel modules.
+Please install the gcc make perl packages from your distribution.
+This system is currently not set up to build kernel modules.
+Please install the gcc make perl packages from your distribution.
+
+There were problems setting up VirtualBox.  To re-start the set-up process, run
+  /sbin/vboxconfig
+as root.  If your system is using EFI Secure Boot you may need to sign the
+kernel modules (vboxdrv, vboxnetflt, vboxnetadp, vboxpci) before you can load
+them. Please see your Linux system's documentation for more information.
+Обрабатываются триггеры для libc-bin (2.35-0ubuntu3.6) …
+db@db-linux:~$ sudo dpkg -r virtualbox-7.1
+(Чтение базы данных … на данный момент установлено 184408 файлов и каталогов.)
+Удаляется virtualbox-7.1 (7.1.4-165100~Ubuntu~jammy) …
+Обрабатываются триггеры для libc-bin (2.35-0ubuntu3.6) …
+Обрабатываются триггеры для shared-mime-info (2.1-2) …
+Обрабатываются триггеры для hicolor-icon-theme (0.17-2) …
+Обрабатываются триггеры для mailcap (3.70+nmu1ubuntu1) …
+Обрабатываются триггеры для gnome-menus (3.36.0-1ubuntu3) …
+Обрабатываются триггеры для desktop-file-utils (0.26-1ubuntu3) …
+db@db-linux:~$

@@ -1,0 +1,179 @@
+
+database IF EXISTS Animal;
+CREATE
+database Animal;
+USE
+Animal;
+
+Создание таблиц
+DROP TABLE IF EXISTS Animal;
+CREATE TABLE Animal
+(
+    idAnimal   	INT AUTO_INCREMENT PRIMARY KEY,
+    typeAnimal 	VARCHAR(250)
+);
+
+DROP TABLE IF EXISTS Pet;
+CREATE TABLE Pet
+(
+    ipPet		INT AUTO_INCREMENT PRIMARY KEY,
+    typePet		VARCHAR(250),
+    idAnimal		INT,
+    FOREIGN KEY (idAnimal) REFERENCES Animal (idAnimal)
+);
+
+DROP TABLE IF EXISTS PackAnimal;
+CREATE TABLE PackAnimal
+(
+    idPackAnimal	INT AUTO_INCREMENT PRIMARY KEY,
+    typePackAnimal	VARCHAR(250),
+    idAnimal  		INT,
+    FOREIGN KEY (idAnimal) REFERENCES Animal (idAnimal)
+);
+
+DROP TABLE IF EXISTS Cat;
+CREATE TABLE Cat
+(
+    idCat		INT AUTO_INCREMENT PRIMARY KEY,
+    name		VARCHAR(250),
+    birthDay		DATE,
+    commands		TEXT,
+    ipPet		INT,
+    FOREIGN KEY (ipPet) REFERENCES Pets (ipPet)
+);
+
+DROP TABLE IF EXISTS Dog;
+CREATE TABLE Dog
+(
+    idDog		INT AUTO_INCREMENT PRIMARY KEY,
+    name		VARCHAR(250),
+    birthDay		DATE,
+    commands		TEXT,
+    ipPet		INT,
+    FOREIGN KEY (ipPet) REFERENCES Pets (ipPet)
+);
+
+DROP TABLE IF EXISTS Hamster;
+CREATE TABLE Hamster
+(
+    idHamster		INT AUTO_INCREMENT PRIMARY KEY,
+    name		VARCHAR(250),
+    birthDay		DATE,
+    commands		TEXT,
+    ipPet		INT,
+    FOREIGN KEY (ipPet) REFERENCES Pets (ipPet)
+);
+
+DROP TABLE IF EXISTS Horse;
+CREATE TABLE Horse
+(
+    idHorse		INT AUTO_INCREMENT PRIMARY KEY,
+    name		VARCHAR(250),
+    birthDay		DATE,
+    commands		TEXT,
+    idPackAnimal	INT,
+    FOREIGN KEY (idPackAnimal) REFERENCES PackAnimals (idPackAnimal)
+);
+
+DROP TABLE IF EXISTS Camel;
+CREATE TABLE Camel
+(
+    idCamel		INT AUTO_INCREMENT PRIMARY KEY,
+    name		VARCHAR(250),
+    birthDay		DATE,
+    commands		TEXT,
+    idPackAnimal	INT,
+    FOREIGN KEY (idPackAnimal) REFERENCES PackAnimals (idPackAnimal)
+);
+
+DROP TABLE IF EXISTS Donkey;
+CREATE TABLE Donkey
+(
+    idDonkey		INT AUTO_INCREMENT PRIMARY KEY,
+    name		VARCHAR(250),
+    birthDay		DATE,
+    commands		TEXT,
+    idPackAnimal	INT,
+    FOREIGN KEY (idPackAnimal) REFERENCES PackAnimal (idPackAnimal)
+);
+
+Заполнение таблиц
+INSERT INTO Animal (typeAnimal)
+VALUES ('Pet'),
+       ('PackAnimal');
+INSERT INTO Pet (typePet, idAnimal)
+VALUES ('Cat', 1),
+       ('Dog', 1),
+       ('Hamster', 1);
+INSERT INTO PackAnimal (typePackAnimal, idAnimal)
+VALUES ('Horse', 2),
+       ('Camel', 2),
+       ('Donkey', 2);
+INSERT INTO Cat (name, birthDay, commands, ipPet)
+VALUES ('Whiskers', '2022-12-12', 'sit, jump', 1);
+INSERT INTO Dog (name, birthDay, commands, ipPet)
+VALUES ('Rex', '2023-03-11', 'fetch, sit', 2);
+INSERT INTO Hamster (name, birthDay, commands, ipPet)
+VALUES ('Nibbles', '2023-03-09', 'run', 3);
+INSERT INTO Horse (name, birthDay, commands, idPackAnimal)
+VALUES ('Thunder', '2019-07-05', 'run', 1);
+INSERT INTO Camel (name, birthDay, commands, idPackAnimal)
+VALUES ('Sandy', '2018-10-23', 'run, jump', 2);
+INSERT INTO Donkey (name, birthDay, commands, idPackAnimal)
+VALUES ('Eeyore', '2022-02-14', 'jump', 3);
+
+SELECT * FROM Animal;
+SELECT * FROM Pet;
+SELECT * FROM PackAnimal;
+SELECT * FROM Cat;
+SELECT * FROM Dog;
+SELECT * FROM Hamster;
+SELECT * FROM Horse;
+SELECT * FROM Camel;
+SELECT * FROM Donkey;
+
+Удаление записей о верблюдах
+DELETE FROM Camel;
+
+Объединение таблиц лошадей и ослов
+DROP TABLE IF EXISTS HorseAndDonkey;
+CREATE TABLE HorseAndDonkey AS
+SELECT idHorse AS id, name, birthDay, commands, 'Horse' AS type
+FROM Horse UNION
+SELECT idDonkey AS id, name, birthDay, commands, 'Donkey' AS type
+FROM Donkey;
+
+SELECT * FROM HorsesAndDonkey;
+
+Создание новой таблицы для животных в возрасте от 1 до 3 лет 
+DROP TABLE IF EXISTS NewAnimal;
+CREATE TABLE NewAnimal AS
+SELECT id,name, birthDay,commands, type,TIMESTAMPDIFF(MONTH, birthDay, CURDATE()) AS ageAnimal
+FROM (SELECT id_cat AS id, name, birthDay, commands, 'Cat' AS type
+      FROM Cat UNION ALL
+      SELECT id_dog AS id, name, birthDay, commands, 'Dog' AS type
+      FROM Dog UNION ALL
+      SELECT id_hamster AS id, name, birthDay, commands, 'Hamster' AS type
+      FROM Hamster UNION ALL
+      SELECT idHorse AS id, name, birthDay, commands, 'Horse' AS type
+      FROM Horse UNION ALL
+      SELECT idDonkey AS id, name, birthDay, commands, 'Donkey' AS type
+      FROM Horse) AS AllAnimal
+WHERE TIMESTAMPDIFF(MONTH, birthDay, CURDATE()) BETWEEN 12 AND 36;
+
+SELECT * FROM NewAnimal;
+
+Объединение всех созданных таблиц в одну
+DROP TABLE IF EXISTS Animals;
+CREATE TABLE Animals AS
+SELECT idCat AS id, name, birthDay, commands, 'Cat' AS type FROM Cat
+UNION
+SELECT idDog AS id, name, birthDay, commands, 'Dog' AS type FROM Dog
+UNION
+SELECT idHamster AS id, name, birthDay, commands, 'Hamster' AS type FROM Hamster
+UNION
+SELECT idHorse AS id, name, birthDay, commands, 'Horse' AS type FROM Horse
+UNION
+SELECT idDonkey AS id, name, birthDay, commands, 'Donkey' AS type FROM Horse;
+
+SELECT * FROM Animals;
